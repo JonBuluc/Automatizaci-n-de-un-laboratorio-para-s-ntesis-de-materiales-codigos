@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoreo de Temperatura y Humedad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f5f9; /* Azul claro */
+            color: #444; /* Gris oscuro */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff; /* Azul brillante */
+        }
+
+        h2 {
+            color: #5bc0de; /* Azul claro */
+        }
+
+        h3 {
+            color: #17a2b8; /* Azul verdoso */
+        }
+
+        .data {
+            background-color: #ffffff; /* Blanco */
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .charts {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chart {
+            width: 48%;
+            background-color: #ffffff; /* Blanco */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        a {
+            display: inline-block;
+            background-color: #007bff; /* Azul brillante */
+            color: #ffffff; /* Blanco */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Azul oscuro */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Monitoreo de Temperatura y Humedad</h1>
+        <a href="/download/csv">Descargar CSV</a>
+        <hr> <!-- Separación entre el botón y los datos de los sensores -->
+        <div class="data">
+            <h2>Últimos datos del Sensor 1:</h2>
+            <p>Temperatura: { temperature0 } °C</p>
+            <p>Humedad: { humidity0 } %</p>
+            <p>Fecha: { date0 }</p>
+        </div>
+        <div class="data">
+            <h2>Últimos datos del Sensor 2:</h2>
+            <p>Temperatura: { temperature1 } °C</p>
+            <p>Humedad: { humidity1 } %</p>
+            <p>Fecha: { date1 }</p>
+        </div>
+    </div>
+</body>
+
+
+
+</html>
+
+
