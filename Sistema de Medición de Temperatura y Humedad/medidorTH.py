@@ -8,7 +8,7 @@ pinClockDos=33
 
 import socket
 import network
-import utime
+import time
 from machine import Timer, Pin
 from machine import I2C
 
@@ -52,7 +52,7 @@ if modo == 1:
 
 else:
     station = network.WLAN(network.AP_IF)  # Crea la interfaz del punto de acceso
-    station.config(ssid='prueba')  # Configura el SSID del punto de acceso
+    station.config(ssid='Medidor Temp y humedad')  # Configura el SSID del punto de acceso
     station.config(max_clients=10)  # Establece cuántos clientes pueden conectarse a la red
     station.active(True)  # Activa la interfaz
     print('AP encendido')
@@ -63,10 +63,7 @@ else:
 print("http://" + station.ifconfig()[0])
 
 
-with open('ifconfig.txt', 'w') as f:
-    f.write(str(station.ifconfig()))  # Guarda la información en un archivo
-
-def strftime(sample_time):
+def strftime(format, sample_time):
     months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     return "{:02d} {} {:04d} {:02d}:{:02d}:{:02d}".format(sample_time[2], months[sample_time[1] - 1], sample_time[0], sample_time[3], sample_time[4], sample_time[5])
 
@@ -100,8 +97,16 @@ def guardarCsv(sensor_data_list):
 def tomarDatos(sensor_list):
     sensor_data_list = []
     for sensor in sensor_list:
-        temperature, humidity = sensor.readRensor()
-        sensor_data_list.append((temperature, humidity, utime.localtime()))
+        temperature, humidity = sensor.readSensor()
+        count=0
+        while temperature == "no data":
+            time.sleep(1)
+            temperature, humidity = sensor.readSensor()
+            count+=1
+            if count==10:
+                break
+
+        sensor_data_list.append((temperature, humidity, time.localtime()))
     return sensor_data_list
 
 def my_callback(timer):

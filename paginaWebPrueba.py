@@ -45,7 +45,7 @@ def pagina_web():
     <html>
     <head><title>Página de Ejemplo</title></head>
     <body>
-    <h1>Hola desde tu ESP32!</h1>
+    <h1>Jose Daniel!</h1>
     <p>¡Esta es una página de ejemplo!</p>
     </body>
     </html>"""

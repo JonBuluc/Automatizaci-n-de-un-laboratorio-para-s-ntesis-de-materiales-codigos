@@ -93,7 +93,7 @@ class AHT15:
 #     
 #     time.sleep(2)
 #     try:
-#         temperature, humidity = sensor.read_sensor()
+#         temperature, humidity = sensor.readSensor()
 #         print('Temperatura:', temperature, '°C')
 #         print('Humedad:', humidity, '%')
 #     except:
