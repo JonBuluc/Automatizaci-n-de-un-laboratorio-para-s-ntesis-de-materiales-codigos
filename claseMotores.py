@@ -14,28 +14,38 @@ class MotorPasoPasoModoSecuencia:
             [0, 0, 1, 1]   # Paso 4: 0011
         ]
         self.secuenciaActual = 0
+        self.paso1.value(self.secuenciaPasos[0][0])
+        self.paso2.value(self.secuenciaPasos[0][1])
+        self.paso3.value(self.secuenciaPasos[0][2])
+        self.paso4.value(self.secuenciaPasos[0][3])
 
     def moverDireccionUno(self, delayTiempoMicros):
-        i = self.secuenciaActual
+        i = self.secuenciaActual+1
+        if i == 4:
+            i = 0
+            self.secuenciaActual=0
+        print(i)
         self.paso1.value(self.secuenciaPasos[i][0])
         self.paso2.value(self.secuenciaPasos[i][1])
         self.paso3.value(self.secuenciaPasos[i][2])
         self.paso4.value(self.secuenciaPasos[i][3])
         time.sleep_us(delayTiempoMicros)
-        self.secuenciaActual += 1
-        if self.secuenciaActual == 4:
-            self.secuenciaActual = 0
+        self.secuenciaActual = i
+
 
     def moverDireccionDos(self, delayTiempoMicros):
-        i=self.secuenciaActual
+        i=self.secuenciaActual-1
+        if i== -1:
+            i=3
+            self.secuenciaActual = 3
+        print(i)
         self.paso1.value(self.secuenciaPasos[i][0])
         self.paso2.value(self.secuenciaPasos[i][1])
         self.paso3.value(self.secuenciaPasos[i][2])
         self.paso4.value(self.secuenciaPasos[i][3])
         time.sleep_us(delayTiempoMicros)
-        self.secuenciaActual += 1
-        if self.secuenciaActual == 4:
-            self.secuenciaActual = 0
+        self.secuenciaActual = i
+        
             
     def moverPasos(self, numPasos, direccion, delayTiempoMicros):
         if direccion:
@@ -76,3 +86,4 @@ class MotorPasoPasoModoPulso:
             for _ in range(numPasos):
                 self.moverDireccionDos(delayTiempoMicros)
                 self.conteoPasos-=numPasos
+
