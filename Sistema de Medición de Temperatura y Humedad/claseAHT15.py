@@ -1,16 +1,3 @@
-from machine import Pin
-# esto es en particular para alimentar el sensor por los pines 17 o 16
-# Configurar el pin GPIO 17 como salida
-pinout = Pin(17, Pin.OUT)
-pinOutDos=Pin(16,Pin.OUT)
-
-# Encender el pin
-pinout.on()
-print("17 on")
-pinOutDos.on()
-print("16 on")
-
-
 from machine import I2C
 import time
 

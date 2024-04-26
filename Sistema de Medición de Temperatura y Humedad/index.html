@@ -36,18 +36,30 @@
             margin-bottom: 20px;
         }
 
-        .charts {
+        .btn-container {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
-        .chart {
-            width: 48%;
-            background-color: #ffffff; /* Blanco */
-            padding: 10px;
+        .btn-container button {
+            display: inline-block;
+            background-color: #007bff; /* Azul brillante */
+            color: #ffffff; /* Blanco */
+            padding: 10px 20px;
+            text-decoration: none;
             border-radius: 5px;
+            margin-top: 20px;
         }
 
+        .btn-container button.delete-btn {
+            background-color: #ff0000; /* Rojo */
+        }
+
+        .btn-container button:hover {
+            background-color: #0056b3; /* Azul oscuro */
+        }
         a {
             display: inline-block;
             background-color: #007bff; /* Azul brillante */
@@ -66,7 +78,12 @@
 <body>
     <div class="container">
         <h1>Monitoreo de Temperatura y Humedad</h1>
-        <a href="/download/csv">Descargar CSV</a>
+        <div class="btn-container">
+            <a href="/download/csv">Descargar CSV</a>
+            <form action="/delete/csv" method="post">
+                <button type="submit" class="delete-btn">Borrar CSV</button>
+            </form>
+        </div>
         <hr> <!-- Separación entre el botón y los datos de los sensores -->
         <div class="data">
             <h2>Últimos datos del Sensor 1:</h2>
@@ -80,11 +97,24 @@
             <p>Humedad: { humidity1 } %</p>
             <p>Fecha: { date1 }</p>
         </div>
+        <div class="data">
+            <h2>Últimos datos del Sensor 3:</h2>
+            <p>Temperatura: { temperature2 } °C</p>
+            <p>Humedad: { humidity2 } %</p>
+            <p>Fecha: { date2 }</p>
+        </div>
+        <div class="data">
+            <h2>Últimos datos del Sensor 4:</h2>
+            <p>Temperatura: { temperature3 } °C</p>
+            <p>Humedad: { humidity3 } %</p>
+            <p>Fecha: { date3 }</p>
+        </div>
     </div>
 </body>
 
 
 
 </html>
+
 
 
